@@ -2,6 +2,7 @@ FROM python:3.9
 
 RUN useradd --create-home userapi
 WORKDIR /Pycharm_flask_project
+ENV PORT 8000
 
 RUN pip install -U pipenv
 COPY Pipfile .
@@ -10,6 +11,7 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy --system
 COPY ./ .
 RUN chown -R userapi:userapi ./
 USER userapi
+
 
 EXPOSE 8000
 CMD gunicorn --bind 0.0.0.0:$PORT wsgi:app

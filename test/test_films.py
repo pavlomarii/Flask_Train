@@ -17,6 +17,7 @@ class FakeFilm:
 
 
 class TestFilms:
+    test = 0
     uuid = []
 
     def test_get_films_with_db(self):

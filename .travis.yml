@@ -8,10 +8,11 @@ before_install:
 install:
   - pip install pipenv
   - pipenv install --dev
+  - pipenv install coveralls
 
 script:
   - python -m pytest test/
   - coverage run --source="src/" -m pytest
   - pycodestyle src/ --ignore=E722,E501,E402
 
-coveralls: true
+after_success: coveralls
